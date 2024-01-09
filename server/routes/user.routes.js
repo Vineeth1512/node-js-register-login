@@ -5,13 +5,11 @@ const userController = require("../controllers/user.controller");
 router.post("/register", (req, res, next) => {
     try {
         const { name, email, password } = req.body;
-
         if (!email || !name || !password) {
             return res.status(400).json({
                 message: "All fields are required."
             });
         }
-
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             return res.status(400).json({
@@ -25,9 +23,9 @@ router.post("/register", (req, res, next) => {
             });
         }
 
-        console.log("Request Body:", req.body); // Log the request body before parsing
+        console.log("Request Body:", req.body); 
 
-        next(); // Continue to the next middleware or route handler
+        next(); 
     } catch (error) {
         console.error("Error in register route:", error);
         return res.status(500).json({
